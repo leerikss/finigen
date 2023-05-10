@@ -1,8 +1,8 @@
 # FIN Invoice Generator
 
 Generates a PDF (and HTML) invoice meeting Finnish invoice requirements.<br>
-The invoice data is separated into YAML files, and the 
-styling can be configured via HTML, CSS & JS files.
+The invoice data is separated into YAML files, and the styling can be configured 
+via Front-End code (HTML/CSS/JS/images).
 
 ![Alt text](screenshot.png?raw=true "finigen screenshot")
 
