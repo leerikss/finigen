@@ -96,12 +96,12 @@
     display: inline-block;
     text-align: center;
     font-size: 8pt;
-    font-weight: bold;
     line-height: 10pt;
 }
 
 .company__logo {
     width:140px;
+    border: 1px solid black;
 }
 
 /* Customer */
