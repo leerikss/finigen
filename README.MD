@@ -44,7 +44,7 @@ docker run -e invoice=<invoice key> -v ./in:/app/in -v ./out:/app/out finigen
 ~~~
 
 ### Mandatory arguments
-**--invoice \<value\>** - must match an existing key in the data/invoices.yaml file
+**--invoice \<value\>** - must match an existing key in the ./in/data/invoices.yaml file
 
 ## Output folder
 The invoice files (HTML,PDF etc.) will be generated into a new folder named "out".

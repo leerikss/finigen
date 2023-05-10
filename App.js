@@ -1,4 +1,4 @@
-// Example usage: node App.js --invoice 2023-05-01
+// Example usage: node App.js --invoice 400101
 
 import {Command} from 'commander'
 import {InvoiceUtil} from "./InvoiceUtil.js";
