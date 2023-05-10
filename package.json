@@ -1,0 +1,23 @@
+{
+  "name": "finigen",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Generate a finnish invoice",
+  "main": "App.js",
+  "scripts": {
+    "start": "node App.js --invoice ",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@leif.fi:31/home/git/finigen.git"
+  },
+  "author": "Leif Eriksson",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "commander": "^10.0.1",
+    "dot": "^2.0.0-beta.1",
+    "puppeteer": "^19.11.1",
+    "yaml": "^2.2.2"
+  }
+}

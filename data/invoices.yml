@@ -1,0 +1,13 @@
+400101:
+  number: 400101
+  issued: 2040-01-01
+  termsDays: 21
+  penalInterest: 8
+  customer: Asiakas1
+  services:
+    -
+      name: Kuvaus tehdystä työstä
+      quantity: 30
+      quantityUnit: h
+      price: 70
+      taxRate: 24

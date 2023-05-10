@@ -1,0 +1,8 @@
+Asiakas1:
+  number: 10
+  name: Asiakas Oy
+  contactPerson: Asiakashenkilö
+  address:
+    streetAddress: Asiakkaan osoite 1
+    city: Helsinki
+    postCode: '00100'

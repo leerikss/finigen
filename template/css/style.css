@@ -1,0 +1,163 @@
+/* Modify built-in styles */
+* {
+    font-family: Verdana, Sans;
+    font-size: 11pt;
+    line-height: 18pt;
+}
+
+/* Page specific */
+.page--background {
+    background: url("../img/bg.jpg") no-repeat 0px 0px fixed;
+    background-size: 800px 1200px;
+}
+
+.page--margins {
+    margin: 50px;
+}
+
+.page--center {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 84%;
+}
+
+/* Text specific */
+.text--stronger {
+    font-weight: bold;
+    font-size: 14pt;
+}
+
+.text--bigger {
+    font-size: 12pt;
+}
+
+.text--right-padding {
+    padding-right: 15px;
+}
+
+/* Table specific */
+.table__row {
+    display: flex;
+}
+
+.table__row--margin-top {
+    display: flex;
+    margin-top: 15px;
+}
+
+.table__cell {
+    flex:1;
+}
+
+.table__cell--center {
+    flex:1;
+    text-align: center;
+}
+
+.table__cell--right {
+    flex:1;
+    text-align: right;
+}
+
+.table__2-cells {
+    flex:2;
+}
+
+.table__2-cells--center {
+    flex:2;
+    text-align: center;
+}
+
+.table__3-cells {
+    flex:3;
+}
+
+.table__3-cells--center {
+    flex:3;
+    text-align: center;
+}
+
+.table__4-cells {
+    flex:4;
+}
+
+.table__5-cells {
+    flex:5;
+}
+
+.table__5-cells--right {
+    flex:5;
+    text-align: right;
+}
+
+/* Company */
+.company {
+    display: inline-block;
+    text-align: center;
+    font-size: 8pt;
+    font-weight: bold;
+    line-height: 10pt;
+}
+
+.company__logo {
+    width:140px;
+}
+
+/* Customer */
+.customer {
+    margin-top: 70px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* Invoice details */
+.invoice__title {
+    text-transform: uppercase;
+    font-size: 14pt;
+    font-weight: bold;
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+/* Services & sums */
+.services {
+    border: 1px solid black;
+    margin-top: 80px;
+    padding: 0px;
+}
+
+.services__header {
+    font-weight: bold;
+    background-color: #c4e5f8;
+    border-bottom: 1px solid;
+}
+
+.services__header, .services__details, .services__sums {
+    padding: 6px;
+}
+
+/* Payment details area */
+.payment-details {
+    background: white;
+    padding: 20px;
+    padding-bottom: 0px;
+    border: 1px solid black;
+    bottom: 50px;
+}
+
+#payment-details__qrcode {
+    float:right;
+}
+
+#payment-details__barcode {
+    margin-top: 5px;
+}
+
+/* Contact details */
+.contact-details {
+    bottom: 20px;
+    text-align: center;
+    font-size: 8pt;
+}

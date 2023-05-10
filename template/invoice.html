@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+{{
+    /* doT.js helper methods */
+
+    function euros(sum) {
+        return Intl.NumberFormat('fi-FI', {
+            style: 'currency',
+            currency: 'EUR',
+        }).format(sum);
+    }
+
+    function date(sDate) {
+        const date = new Date(sDate);
+        return new Intl.DateTimeFormat('fi-FI').format(date)
+    }
+
+    function spacing(s) {
+        return s.replace(/(.{4})/g,"$1 ");
+    }
+
+}}
+<html class="page--background" lang="fi-fi">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Lasku :: {{=it.company.name}}</title>
+    <link href="css/style.css" rel="stylesheet"/>
+
+    <script src="js/JsBarcode.js"></script>
+    <script src="js/QRCode.js"></script>
+    <script src="js/Invoice.js"></script>
+
+</head>
+
+<body class="page--margins">
+
+<!-- Company, customer, invoice details -->
+<div class="table__row">
+    <div class="table__cell">
+        <div class="company">
+            <img src="img/logo.png" class="company__logo"/><br/>
+            {{=it.company.name}}<br/>
+            {{=it.company.address.streetAddress}}<br/>
+            {{=it.company.address.postCode}} {{=it.company.address.city}}
+        </div>
+        <div class="customer">
+            {{=it.customer.name}}<br/>
+            {{=it.customer.contactPerson}}<br/>
+            {{=it.customer.address.streetAddress}}<br/>
+            {{=it.customer.address.postCode}} {{=it.customer.address.city}}
+        </div>
+    </div>
+    <div class="table__cell">
+        <div class="invoice__title">
+            LASKU
+        </div>
+        <div class="table__row">
+            <div class="table__cell">
+                Päivämäärä<br/>
+                Eräpäivä<br/>
+                Laskunumero<br/>
+                Maksuehto<br/>
+                Viivästyskorko<br/>
+                Valuutta
+            </div>
+            <div class="table__cell">
+                {{= date(it.invoice.issued) }}<br/>
+                <strong>{{= date(it.dueDate) }}</strong><br/>
+                {{=it.invNr}}<br/>
+                <strong>{{=it.invoice.termsDays}} pv netto</strong><br/>
+                {{=it.invoice.penalInterest}} &#37;<br/>
+                EUR
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Services & sums -->
+<div class="services">
+    <div class="table__row services__header">
+        <div class="table__2-cells">Kuvaus</div>
+        <div class="table__cell--center">A-hinta &#8364;</div>
+        <div class="table__cell--center">Määrä</div>
+        <div class="table__cell--center">ALV &#37;</div>
+        <div class="table__cell--right">Yhteensä &#8364;</div>
+    </div>
+    {{~ it.invoice.services :service }}
+    <div class="table__row services__details">
+        <div class="table__2-cells">{{= service.name }}</div>
+        <div class="table__cell--center">{{= euros(service.price) }}</div>
+        <div class="table__cell--center">{{= service.quantity }} {{= service.quantityUnit }}</div>
+        <div class="table__cell--center">{{= service.taxRate }}</div>
+        <div class="table__cell--right">{{= euros(service.total) }}</div>
+    </div>
+    {{~}}
+</div>
+<div class="services__sums">
+    <div class="table__row">
+        <div class="table__5-cells--right">Yhteensä</div>
+        <div class="table__cell--right">{{= euros(it.totalSums.sumExclTaxes) }}</div>
+    </div>
+    <div class="table__row">
+        <div class="table__5-cells--right">ALV</div>
+        <div class="table__cell--right">{{= euros(it.totalSums.sumTaxes) }}</div>
+    </div>
+    <div class="table__row">
+        <div class="table__5-cells--right"><strong>Maksettavaa yhteensä</strong></div>
+        <div class="table__cell--right"><strong>{{= euros(it.totalSums.sumInclTaxes) }}</strong></div>
+    </div>
+</div>
+
+<!-- Payment details, barcode, qr code -->
+<div class="payment-details page--center">
+    <div class="table__row">
+        <div class="table__4-cells">
+            <div class="table__row">
+                <div class="table__cell text--bigger">
+                    Pankki<br/>
+                    <strong>{{= it.company.bank }}</strong>
+                </div>
+                <div class="table__2-cells--center text--bigger">
+                    IBAN-tilinumero<br/>
+                    <strong>{{= spacing(it.company.iban) }}</strong>
+                </div>
+                <div class="table__cell--right text--bigger text--right-padding">
+                    BIC-koodi<br/>
+                    <strong>{{= it.company.bic }}</strong>
+                </div>
+            </div>
+            <div class="table__row--margin-top">
+                <div class="table__cell text--bigger">
+                    Eräpäivä<br/>
+                    <strong class="text--stronger">{{= date(it.dueDate) }}</strong>
+                </div>
+                <div class="table__cell--center text--bigger">
+                    EUR<br/>
+                    <strong class="text--stronger">{{= euros(it.totalSums.sumInclTaxes) }}</strong>
+                </div>
+                <div class="table__cell--right text--bigger text--right-padding">
+                    Viitenumero<br/>
+                    <strong class="text--stronger">{{= spacing(it.refNr) }}</strong>
+                </div>
+            </div>
+        </div>
+        <div class="table__cell">
+            <div id="payment-details__qrcode"></div>
+        </div>
+    </div>
+    <svg id="payment-details__barcode"></svg>
+    </div>
+</div>
+
+<!-- Contact details -->
+<div class="contact-details page--center">
+    Puh {{= it.company.phone }} | Y-tunnus {{= it.company.businessId }} | s-posti {{= it.company.email }}
+</div>
+
+<script>Invoice.generateCodes('{{=it.company.bic}}', '{{=it.iban}}', '{{=it.totalSums.sumInclTaxes}}', '{{=it.refNr}}', '{{=it.dueDate}}', '{{=it.comName}}');</script>
+
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+bank: Osuuspankki
+bic: OKOYFIHH
+iban: FI4950009420028730
+name: Yritysnimi Oy
+businessId: 21234567-1
+phone: +358 12 345 6789
+email: sahkoposti@yritys.com
+address:
+  streetAddress: Yrityksen osoite 1
+  city: Helsinki
+  postCode: '00100'
