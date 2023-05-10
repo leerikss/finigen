@@ -54,6 +54,8 @@ The out/ folder is git ignored.
 - HTML to PDF conversion: https://pptr.dev/
 - QR code generation: https://davidshimjs.github.io/qrcodejs/
 - Barcode generation: https://lindell.me/JsBarcode/
+- doT template engine: https://olado.github.io/doT/index.html
+- YAML parsing: https://www.npmjs.com/package/yaml
 - Background image Photo by mrish_marina_alekseevna from Pexels: https://www.pexels.com/photo/abstract-blue-painting-6563423/
 - Example logo: https://app.logo.com/
 
